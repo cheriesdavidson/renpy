@@ -126,12 +126,15 @@ label itch:
             elif fn.endswith("-release.apk"):
                 channel = "android"
 
+            elif fn.endswith("-web.zip"):
+                channel = "html5"
+
             else:
                 continue
 
             files.append((fn, channel))
 
-        if not os.path.exists(destination):
+        if len(files) == 0:
             interface.error(
                 _("No uploadable files were found. Please choose 'Build' and try again."),
                 label="build_distributions"
